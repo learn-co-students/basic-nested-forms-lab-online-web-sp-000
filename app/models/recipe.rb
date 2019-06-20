@@ -5,8 +5,9 @@ class Recipe < ActiveRecord::Base
     def ingredients_attributes=(ingredients)
         ingredients.each do |ingredient|
             # if ingredient.strip != ""
-                # ing = Ingredient.find_or_create_by(name: ingredient.name, quantity: ingredient.quantity)
-                ing = Ingredient.find_or_create_by(ingredients_attributes)
+                ing = Ingredient.find_or_create_by(name: ingredient[1]["name"], quantity: ingredient[1]["quantity"])
+                # byebug
+                # ing = Ingredient.find_or_create_by(ingredients_attributes)
                 self.ingredients << ing
             # end
         end
